@@ -1,0 +1,153 @@
+.fadeIn {
+    animation: fadeIn 1s ease-out;
+}
+
+.slideInLeft {
+    animation: slideInLeft 0.8s ease-out;
+}
+
+.slideInRight {
+    animation: slideInRight 0.8s ease-out;
+}
+
+.fadeInUp {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.delay100 {
+    animation-delay: 0.1s;
+    animation-fill-mode: both;
+}
+
+.delay200 {
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+}
+
+.delay300 {
+    animation-delay: 0.3s;
+    animation-fill-mode: both;
+}
+
+.delay400 {
+    animation-delay: 0.4s;
+    animation-fill-mode: both;
+}
+
+.delay500 {
+    animation-delay: 0.5s;
+    animation-fill-mode: both;
+}
+
+.delay600 {
+    animation-delay: 0.6s;
+    animation-fill-mode: both;
+}
+
+.delay700 {
+    animation-delay: 0.7s;
+    animation-fill-mode: both;
+}
+
+.delay800 {
+    animation-delay: 0.8s;
+    animation-fill-mode: both;
+}
+
+.floating {
+    animation: floating 3s ease-in-out infinite;
+}
+
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.smoothTransition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.counter {
+    animation: countUp 1.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floating {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

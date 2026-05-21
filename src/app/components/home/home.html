@@ -1,0 +1,70 @@
+<section class="min-h-screen bg-[#1a1a1a] flex items-center py-20 fadeIn">
+    <div class="max-w-7xl mx-auto px-5 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-15 items-center">
+
+            <!-- Left content -->
+            <div
+                class="flex flex-col gap-5 lg:order-1 order-2 text-center lg:text-left items-center lg:items-start slideInLeft">
+
+                <p class="text-[#888] text-lg m-0 delay100">Hi I am</p>
+
+                <h1 class="text-white text-2xl font-semibold m-0 delay200">
+                    Philimon Ekladyous
+                </h1>
+
+                <h2
+                    class="text-4xl lg:text-5xl font-bold m-0 leading-tight bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent delay300">
+                    Full Stack Developer
+                </h2>
+
+                <!-- Social icons -->
+                <div class="flex gap-3 mt-2.5 delay400">
+                    @for (social of socialLinks; track social.icon) {
+                    <a [href]="social.url" [attr.download]="social.download ? '' : null" target="_blank"
+                        rel="noopener noreferrer" [attr.aria-label]="social.label"
+                        class="w-10 h-10 flex items-center justify-center border border-[rgba(255,107,53,0.3)] rounded-full text-[#888888] transition-all duration-300 hover:border-[#FF6B35] hover:text-[#FF6B35] pulse smoothTransition">
+                        <i [class]="social.icon"></i>
+                    </a>
+                    }
+                </div>
+
+                <!-- CTA buttons -->
+                <div class="flex gap-4 mt-5 flex-col sm:flex-row w-full sm:w-auto delay500">
+                    <a routerLink="/contact"
+                        class="bg-orange-500 text-white px-8 py-3 rounded-md font-medium transition-all duration-300 hover:bg-orange-600 inline-block text-center smoothTransition">
+                        Hire Me
+                    </a>
+                    <a href="/your-cv.pdf" download
+                        class="bg-transparent text-white px-8 py-3 rounded-md font-medium border border-[#666] transition-all duration-300 hover:border-orange-500 hover:text-orange-500 inline-block text-center smoothTransition">
+                        Download CV
+                    </a>
+                </div>
+
+                <!-- Stats -->
+                <!-- <div class="flex mt-10 bg-[#2a2a2a] rounded-lg p-6 justify-center lg:justify-start delay600">
+                    @for (stat of stats; track stat.label; let last = $last; let first = $first) {
+                    <div class="flex flex-col gap-1 px-6 lg:px-8" [class.border-r]="!last" [class.border-[#444]]="!last"
+                        [class.pl-0]="first" [class.pr-0]="last">
+                        <span class="text-orange-500 text-2xl font-bold counter">{{ stat.value }}</span>
+                        <span class="text-white text-sm">{{ stat.label }}</span>
+                    </div>
+                    }
+                </div> -->
+
+            </div>
+
+            <!-- Right content — Profile image -->
+            <div class="flex justify-center items-center lg:order-2 order-1 slideInRight">
+                <div
+                    class="relative w-full max-w-[450px] aspect-square rounded-full overflow-hidden bg-[#2d2d2d] floating delay700">
+                    <div
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#2d2d2d] rounded-full z-10 delay800">
+                    </div>
+                    <img src="/your-photo.png" alt="Profile" class="relative z-20 w-full h-full object-cover"
+                        style="object-position: center 48%" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
