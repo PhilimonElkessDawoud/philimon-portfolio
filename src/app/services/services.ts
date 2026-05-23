@@ -29,7 +29,7 @@ export class ServicesService {
       {
         id: 3,
         title: 'Database Design',
-        description: 'Structuring efficient relational databases (PostgreSQL, MySQL) and NoSQL (MongoDB) with optimized queries and indexing strategies.',
+        description: 'Structuring efficient relational databases like PostgreSQL & MySQL and also NoSQL likeMongoDB, Neo4j, with optimized queries and indexing strategies.',
         icon: 'database',
       },
       {
