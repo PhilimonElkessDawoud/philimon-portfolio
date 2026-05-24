@@ -4,10 +4,12 @@ import { Navbar } from "./components/navbar/navbar";
 import { Footer } from "./components/footer/footer";
 import { Home } from './components/home/home';
 import { Services } from './components/services/services';
+import { About } from './components/about/about';
+import { Icon } from './shared/icon/icon';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, Footer, Home, Services],
+  imports: [RouterOutlet, Navbar, Footer, Home, Services, About],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

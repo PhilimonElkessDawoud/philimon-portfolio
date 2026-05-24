@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-export interface About {
+export interface about {
   sectionTitle: string;
   subtitle: string;
   bio: string;
@@ -12,7 +12,7 @@ export interface About {
 })
 
 export class AboutService {
-  getAbout(): About {
+  getAbout(): about {
     return {
       sectionTitle: "About Me",
       subtitle: "Full Stack Developer — Clean Code & Scalable Architecture",

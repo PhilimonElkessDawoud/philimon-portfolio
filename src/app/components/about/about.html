@@ -1,1 +1,82 @@
-<p>about works!</p>
+<section id="about" class="py-20 bg-[#1a1a1a] sectionFadeIn">
+    <div class="max-w-7xl mx-auto px-5">
+
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h2 class="text-white text-3xl font-bold mb-2 titleFadeIn">
+                {{ about.sectionTitle }}
+            </h2>
+            <p class="text-[#888] text-lg subtitleFadeIn">
+                {{ about.subtitle }}
+            </p>
+        </div>
+
+        <!-- Bio + Image -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+
+            <!-- Profile image -->
+            <div class="flex justify-center lg:justify-start slideInLeft">
+                <div
+                    class="relative w-full max-w-[350px] h-[450px] rounded-[40%_60%_60%_40%/60%_40%_60%_40%] overflow-hidden bg-[#2d2d2d] imageContainerHover imageFloat">
+                    <img src="/your-photo.png" alt="Profile" class="w-full h-full object-cover object-top grayscale" />
+                </div>
+            </div>
+
+            <!-- Bio text + CV button -->
+            <div class="text-[#888] text-sm leading-relaxed slideInRight">
+                <p class="mb-6 text-base whitespace-pre-line">{{ about.bio }}</p>
+
+                <a [href]="about.cvLink" download
+                    class="inline-flex items-center gap-2 bg-orange-500 text-white px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-orange-600 buttonHover">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    Download CV
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Skills section -->
+        <div #skillsSection class="mt-16 pt-10 border-t border-[#333] slideInUp">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 justify-items-center">
+                @for(skill of skills; track skill.id) {
+                <div class="flex flex-col items-center gap-3 skillCardSlideIn skillCardHover"
+                    [style.animation-delay]="getDelayStyle(skill.id)">
+
+                    <!-- Circular progress (pure SVG — no external lib needed) -->
+                    <div class="w-24 h-24 relative">
+                        <svg class="w-full h-full -rotate-90" viewBox="0 0 100 100">
+                            <!-- Background track -->
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#333" stroke-width="8" />
+                            <!-- Animated progress -->
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#FF6B00" stroke-width="8"
+                                stroke-linecap="round" [style.stroke-dasharray]="2 * 3.14159 * 45"
+                                [style.stroke-dashoffset]="getCircleDashoffset(skill.id)"
+                                style="transition: stroke-dashoffset 0.1s ease" />
+                        </svg>
+                        <!-- Icon in center -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <app-icon [name]="skill.iconKey" />
+                        </div>
+                    </div>
+
+                    <!-- Percentage -->
+                    <span class="text-orange-500 font-bold text-lg">
+                        {{ animatedValues[skill.percentage] }}%
+                    </span>
+
+                    <!-- Skill name -->
+                    <span class="text-[#888] text-sm">{{ skill.name }}</span>
+
+                </div>
+                }
+
+            </div>
+        </div>
+
+    </div>
+</section>

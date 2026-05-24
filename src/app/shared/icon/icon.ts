@@ -10,6 +10,6 @@ export class Icon {
   @Input() name!: string;
 
   get iconPath(): string {
-    return `assets/icons/${this.name}.svg`;
+    return `icons/${this.name}.svg`;
   }
 }
