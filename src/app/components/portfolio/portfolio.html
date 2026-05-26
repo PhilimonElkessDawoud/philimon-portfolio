@@ -1,1 +1,76 @@
-<p>portfolio works!</p>
+<section class="min-h-screen bg-[#1a1a1a] py-24 px-4 sectionFadeIn">
+    <div class="max-w-7xl mx-auto">
+
+        <!-- Title -->
+        <h1 class="text-4xl md:text-5xl font-bold text-white text-center mb-12 titleSlideIn">
+            Portfolio
+        </h1>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-4 mb-16 filterGroupSlideIn">
+
+            @for (category of categories; track $index) {
+            <button (click)="setCategory(category.id)"
+                class="px-8 py-3 rounded-lg font-medium filterButtonSlideIn filterButtonHover transition-all duration-300"
+                [class.bg-orange-500]="activeCategory() === category.id"
+                [class.text-white]="activeCategory() === category.id"
+                [class.bg-gray-800]="activeCategory() !== category.id"
+                [class.text-gray-400]="activeCategory() !== category.id"
+                [class.filterButtonActive]="activeCategory() === category.id" [class]="getDelayClass($index)">
+                {{ category.label }}
+            </button>
+            }
+
+        </div>
+
+        <!-- Projects Grid -->
+        <div
+            class="flex overflow-x-auto gap-6 pb-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-x-visible scrollbar-hide projectGridSlideIn">
+
+            @for (project of filteredProjects(); track project.id) {
+
+            <div (click)="openLive(project.live)"
+                class="bg-[#2a2a2a] rounded-xl overflow-hidden shadow-lg shrink-0 w-80 md:w-auto projectCardHover projectCardSlideIn gradientOverlay"
+                [class.cursor-pointer]="project.live" [class]="getDelayClass(project.id)">
+
+                <!-- Image -->
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img [src]="project.image" [alt]="project.title"
+                        class="w-full h-full object-cover projectImageZoom" />
+                </div>
+
+                <!-- Info -->
+                <div class="p-6">
+
+                    <h3 class="text-xl font-semibold text-white mb-3 projectTitleReveal">
+                        {{ project.title }}
+                    </h3>
+
+                    <p class="text-gray-400 text-sm mb-3 categoryBadgeSlideIn">
+                        {{ getCategoryLabel(project.category) }}
+                    </p>
+
+                    <!-- Github -->
+                    <button (click)="openGithub($event, project.github)"
+                        class="inline-flex items-center gap-2 px-4 py-2 text-sm bg-gray-700 text-orange-400 rounded-lg hover:bg-gray-600 hover:text-orange-300 transition-all duration-300">
+                        Source Code
+                    </button>
+
+                </div>
+            </div>
+
+            }
+
+        </div>
+
+        <!-- Empty State -->
+        @if (filteredProjects().length === 0) {
+        <div class="text-center py-12 noProjectsFadeIn">
+            <p class="text-gray-400 text-lg">
+                No projects found in this category.
+            </p>
+        </div>
+        }
+
+    </div>
+</section>

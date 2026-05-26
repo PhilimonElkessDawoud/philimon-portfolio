@@ -59,7 +59,6 @@ export class About implements OnInit, AfterViewInit, OnDestroy {
       // Ease out cubic for smooth deceleration
       const eased = 1 - Math.pow(1 - progress, 3);
 
-      // ✅ Always create new array reference
       this.animatedValues = this.skills.map((skill) =>
         Math.round(eased * skill.percentage)
       );

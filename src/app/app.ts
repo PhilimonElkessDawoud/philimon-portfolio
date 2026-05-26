@@ -6,10 +6,11 @@ import { Home } from './components/home/home';
 import { Services } from './components/services/services';
 import { About } from './components/about/about';
 import { Icon } from './shared/icon/icon';
+import { Portfolio } from './components/portfolio/portfolio';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, Footer, Home, Services, About],
+  imports: [RouterOutlet, Navbar, Footer, Home, Services, About, Portfolio],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
