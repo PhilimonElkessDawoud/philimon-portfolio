@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ElementRef, ViewChild, ChangeDetectorRef, inject } from '@angular/core';
 import { AboutService, about } from '../../services/about';
 import { SkillsService, Skill } from '../../services/skills';
 import { Icon } from '../../shared//icon/icon';
@@ -9,20 +9,23 @@ import { Icon } from '../../shared//icon/icon';
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
-export class About implements OnInit, OnDestroy {
+export class About implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('skillsSection') skillsSection!: ElementRef;
+
+  private aboutService = inject(AboutService);
+  private skillsService = inject(SkillsService);
+  private cdr = inject(ChangeDetectorRef);
 
   about!: about;
   skills: Skill[] = [];
-  isVisible = false;
   animatedValues: number[] = [];
+  isVisible = false;
+
+  readonly radius = 45;
+  readonly circumference = 2 * Math.PI * this.radius;
 
   private observer!: IntersectionObserver;
-
-  constructor(
-    private aboutService: AboutService,
-    private skillsService: SkillsService
-  ) { }
+  private animationId!: number;
 
   ngOnInit() {
     this.about = this.aboutService.getAbout();
@@ -33,7 +36,7 @@ export class About implements OnInit, OnDestroy {
   ngAfterViewInit() {
     this.observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !this.isVisible) {
           this.isVisible = true;
           this.animateSkills();
           this.observer.disconnect();
@@ -57,18 +60,24 @@ export class About implements OnInit, OnDestroy {
         this.animatedValues[i] = Math.round(eased * skill.percentage);
       });
 
+      // Add this temporarily
+      console.log('animatedValues:', [...this.animatedValues]);
+      console.log('last value:', this.animatedValues[this.skills.length - 1]);
+
+      this.cdr.markForCheck();
+      this.cdr.detectChanges();
+
       if (progress < 1) {
-        requestAnimationFrame(animate);
+        this.animationId = requestAnimationFrame(animate);
       }
     };
 
-    requestAnimationFrame(animate);
+    this.animationId = requestAnimationFrame(animate);
   }
 
-  getCircleDashoffset(index: number): number {
-    const radius = 45;
-    const circumference = 2 * Math.PI * radius;
-    return circumference - (this.animatedValues[index] / 100) * circumference;
+  getDashoffset(index: number): number {
+    const percent = this.animatedValues[index] ?? 0;
+    return this.circumference - (percent / 100) * this.circumference;
   }
 
   getDelayStyle(index: number): string {
@@ -77,5 +86,6 @@ export class About implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     if (this.observer) this.observer.disconnect();
+    if (this.animationId) cancelAnimationFrame(this.animationId);
   }
 }
