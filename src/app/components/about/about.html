@@ -16,18 +16,21 @@
 
             <!-- Profile image -->
             <div class="flex justify-center lg:justify-start slideInLeft">
-                <div
-                    class="relative w-full max-w-[350px] h-[450px] rounded-[40%_60%_60%_40%/60%_40%_60%_40%] overflow-hidden bg-[#2d2d2d] imageContainerHover imageFloat">
+                <div class="relative w-full max-w-[350px] h-[450px] 
+          rounded-[40%_60%_60%_40%/60%_40%_60%_40%] 
+          overflow-hidden bg-[#2d2d2d] 
+          imageContainerHover imageSlideIn imageFloat gradientOverlay">
                     <img src="/your-photo.png" alt="Profile" class="w-full h-full object-cover object-top grayscale" />
                 </div>
             </div>
 
-            <!-- Bio text + CV button -->
-            <div class="text-[#888] text-sm leading-relaxed slideInRight">
-                <p class="mb-6 text-base whitespace-pre-line">{{ about.bio }}</p>
-
-                <a [href]="about.cvLink" download
-                    class="inline-flex items-center gap-2 bg-orange-500 text-white px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-orange-600 buttonHover">
+            <!-- Bio + button -->
+            <div class="text-[#888] text-sm leading-relaxed slideInRight contentFadeIn">
+                <p class="mb-6 text-base whitespace-pre-line bioTextReveal">
+                    {{ about.bio }}
+                </p>
+                <a [href]="about.cvLink" download class="inline-flex items-center gap-2 bg-orange-500 text-white 
+            px-6 py-3 rounded-md font-medium buttonHover buttonSlideIn buttonPulse">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -40,38 +43,45 @@
 
         </div>
 
+
         <!-- Skills section -->
-        <div #skillsSection class="mt-16 pt-10 border-t border-[#333] slideInUp">
+        <div #skillsSection class="mt-16 pt-10 border-t border-[#333]">
+
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 justify-items-center">
                 @for(skill of skills; track skill.id) {
-                <div class="flex flex-col items-center gap-3 skillCardSlideIn skillCardHover"
-                    [style.animation-delay]="getDelayStyle(skill.id)">
+                <!-- Card: only animate in when section is visible -->
+                <div class="flex flex-col items-center gap-3 skillCardHover" [class.skillCardSlideIn]="isVisible"
+                    [style.animation-delay]="getStaggerDelay(skill.id)" [style.animation-fill-mode]="'both'">
 
-                    <!-- Circular progress (pure SVG — no external lib needed) -->
-                    <div class="w-24 h-24 relative">
+                    <!-- Circular progress -->
+                    <div class="w-24 h-24 relative progressRing">
                         <svg class="w-full h-full -rotate-90" viewBox="0 0 100 100">
-                            <!-- Background track -->
+                            <!-- Track -->
                             <circle cx="50" cy="50" r="45" fill="none" stroke="#333" stroke-width="8" />
-                            <!-- Animated progress -->
+                            <!-- Progress -->
                             <circle cx="50" cy="50" r="45" fill="none" stroke="#FF6B00" stroke-width="8"
                                 stroke-linecap="round" [attr.stroke-dasharray]="circumference"
                                 [attr.stroke-dashoffset]="getDashoffset(skill.id)" />
                         </svg>
-                        <!-- Icon in center -->
-                        <div class="absolute inset-0 flex items-center justify-center">
+
+                        <!-- Icon with continuous bounce -->
+                        <div class="absolute inset-0 flex items-center justify-center skillIconBounce">
                             <app-icon [name]="skill.iconKey" />
                         </div>
                     </div>
 
-                    <!-- Percentage -->
-                    <span class="text-orange-500 font-bold text-lg">
-                        {{ animatedValues[skill.percentage] }} {{skill.percentage}}%
+                    <!-- Animated percentage counter -->
+                    <span class="text-orange-500 font-bold text-lg percentageCounter">
+                        {{ animatedValues[skill.id] }}%
                     </span>
 
                     <!-- Skill name -->
-                    <span class="text-[#888] text-sm">{{ skill.name }}</span>
+                    <span class="text-[#888] text-sm textReveal">
+                        {{ skill.name }}
+                    </span>
 
                 </div>
+
                 }
 
             </div>

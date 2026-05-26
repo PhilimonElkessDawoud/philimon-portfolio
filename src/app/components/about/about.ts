@@ -38,31 +38,31 @@ export class About implements OnInit, AfterViewInit, OnDestroy {
       ([entry]) => {
         if (entry.isIntersecting && !this.isVisible) {
           this.isVisible = true;
-          this.animateSkills();
+          this.cdr.markForCheck();
+          this.cdr.detectChanges();
+          setTimeout(() => this.animateSkills(), 100);
           this.observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
     this.observer.observe(this.skillsSection.nativeElement);
   }
 
   animateSkills() {
-    const duration = 1200;
+    const duration = 1500;
     const startTime = performance.now();
 
     const animate = (currentTime: number) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic for smooth deceleration
       const eased = 1 - Math.pow(1 - progress, 3);
 
-      this.skills.forEach((skill, i) => {
-        this.animatedValues[i] = Math.round(eased * skill.percentage);
-      });
-
-      // Add this temporarily
-      console.log('animatedValues:', [...this.animatedValues]);
-      console.log('last value:', this.animatedValues[this.skills.length - 1]);
+      // ✅ Always create new array reference
+      this.animatedValues = this.skills.map((skill) =>
+        Math.round(eased * skill.percentage)
+      );
 
       this.cdr.markForCheck();
       this.cdr.detectChanges();
@@ -80,8 +80,8 @@ export class About implements OnInit, AfterViewInit, OnDestroy {
     return this.circumference - (percent / 100) * this.circumference;
   }
 
-  getDelayStyle(index: number): string {
-    return `${(index + 1) * 0.1}s`;
+  getStaggerDelay(index: number): string {
+    return `${index * 0.1}s`;
   }
 
   ngOnDestroy() {
