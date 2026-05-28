@@ -7,10 +7,11 @@ import { Services } from './components/services/services';
 import { About } from './components/about/about';
 import { Icon } from './shared/icon/icon';
 import { Portfolio } from './components/portfolio/portfolio';
+import { Contact } from './components/contact/contact';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, Footer, Home, Services, About, Portfolio],
+  imports: [RouterOutlet, Navbar, Footer, Home, Services, About, Portfolio, Contact],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

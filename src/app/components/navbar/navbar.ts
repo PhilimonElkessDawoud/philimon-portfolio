@@ -14,7 +14,7 @@ export class Navbar {
     { id: 2, name: 'Services', path: '/services' },
     { id: 3, name: 'About me', path: '/about' },
     { id: 4, name: 'Portfolio', path: '/portfolio' },
-    { id: 5, name: 'Feedback', path: '/feedback' },
+    // { id: 5, name: 'Feedback', path: '/feedback' },
     { id: 6, name: 'Contact me', path: '/contact' },
   ];
 
