@@ -1,22 +1,24 @@
-import { Component, OnInit, OnDestroy, AfterViewInit, ElementRef, ViewChild, ChangeDetectorRef, inject } from '@angular/core';
-import { AboutService, about } from '../../services/about';
+import {
+  Component, OnInit, OnDestroy, AfterViewInit,
+  ElementRef, ViewChild, ChangeDetectorRef, inject
+} from '@angular/core';
 import { SkillsService, Skill } from '../../services/skills';
-import { Icon } from '../../shared//icon/icon';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Icon } from '../../shared/icon/icon';
 
 @Component({
   selector: 'app-about',
-  imports: [Icon],
+  imports: [Icon, TranslateModule],
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
 export class About implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('skillsSection') skillsSection!: ElementRef;
 
-  private aboutService = inject(AboutService);
   private skillsService = inject(SkillsService);
+  private translate = inject(TranslateService);
   private cdr = inject(ChangeDetectorRef);
 
-  about!: about;
   skills: Skill[] = [];
   animatedValues: number[] = [];
   isVisible = false;
@@ -27,8 +29,11 @@ export class About implements OnInit, AfterViewInit, OnDestroy {
   private observer!: IntersectionObserver;
   private animationId!: number;
 
+  get cvUrl(): string {
+    return this.translate.instant('home.cvLink');
+  }
+
   ngOnInit() {
-    this.about = this.aboutService.getAbout();
     this.skills = this.skillsService.getSkills();
     this.animatedValues = this.skills.map(() => 0);
   }
@@ -56,7 +61,6 @@ export class About implements OnInit, AfterViewInit, OnDestroy {
     const animate = (currentTime: number) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic for smooth deceleration
       const eased = 1 - Math.pow(1 - progress, 3);
 
       this.animatedValues = this.skills.map((skill) =>

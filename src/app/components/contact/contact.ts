@@ -1,16 +1,18 @@
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import emailjs from '@emailjs/browser';
 import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-contact',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslateModule],
   templateUrl: './contact.html',
   styleUrl: './contact.css',
 })
 export class Contact {
   private fb = inject(FormBuilder);
+  private translate = inject(TranslateService);
 
   isSubmitting = false;
   submitSuccess = false;
@@ -25,7 +27,6 @@ export class Contact {
     details: ['', [Validators.required, Validators.minLength(10)]],
   });
 
-  // Shorthand getters for cleaner template access
   get name() { return this.form.get('name')!; }
   get email() { return this.form.get('email')!; }
   get phone() { return this.form.get('phone')!; }
@@ -74,7 +75,14 @@ export class Contact {
         environment.emailjsPublicKey
       );
       this.submitSuccess = true;
-      this.form.reset();
+      this.form.reset({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        timeline: '',
+        details: '',
+      });
     } catch (error) {
       this.submitError = true;
       console.error('EmailJS Error:', error);

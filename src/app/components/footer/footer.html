@@ -9,7 +9,8 @@
 
             <div class="flex items-center gap-4 mb-8">
                 @for (social of socialLinks; track social.icon) {
-                <a [href]="social.url" target="_blank" rel="noopener noreferrer" [attr.aria-label]="social.label"
+                <a [href]="social.label === 'CV' ? cvUrl : social.url" [attr.download]="social.download ? '' : null"
+                    target="_blank" rel="noopener noreferrer" [attr.aria-label]="social.label"
                     class="w-10 h-10 flex items-center justify-center border border-[rgba(255,107,53,0.3)] rounded-full text-[#888888] transition-all duration-300 hover:border-[#FF6B35] hover:text-[#FF6B35]">
                     <i [class]="social.icon"></i>
                 </a>
@@ -31,9 +32,9 @@
 
             <div class="border-t border-[rgba(255,107,53,0.2)] w-full max-w-xl pt-6">
                 <p class="text-xs text-[#888888]">
-                    Designed by
+                    {{ 'footer.designedBy' | translate }}
                     <span class="font-semibold text-white">Philimon Ekladyous</span>
-                    Full Stack Developer
+                    {{ 'footer.role' | translate }}
                 </p>
             </div>
 

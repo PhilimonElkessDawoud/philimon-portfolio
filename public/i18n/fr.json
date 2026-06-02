@@ -1,0 +1,120 @@
+{
+    "nav": {
+        "home": "Accueil",
+        "services": "Services",
+        "about": "À propos",
+        "portfolio": "Portfolio",
+        "feedback": "Avis",
+        "contact": "Me contacter",
+        "hireMe": "Engagez-moi"
+    },
+    "home": {
+        "greeting": "Bonjour, je suis",
+        "title": "Développeur Full Stack",
+        "hireMeBtn": "Engagez-moi",
+        "downloadCv": "Télécharger CV",
+        "cvLink": "cvs/Philimon-Ekladyous-Resume-fr.pdf",
+        "stats": {
+            "experience": "Expériences",
+            "projects": "Projets réalisés",
+            "clients": "Clients satisfaits"
+        }
+    },
+    "footer": {
+        "designedBy": "Conçu par",
+        "role": "Développeur Full Stack"
+    },
+    "services": {
+        "title": "Services",
+        "subtitle": "Je fournis des solutions complètes de développement web adaptées à vos besoins, de la création d'interfaces modernes à la conception de systèmes backend robustes.",
+        "items": {
+            "frontend": {
+                "title": "Développement Frontend",
+                "description": "Création d'interfaces responsives et pixel-perfect avec Angular, avec des animations fluides et une compatibilité cross-browser complète."
+            },
+            "backend": {
+                "title": "Développement Backend",
+                "description": "Conception d'APIs REST évolutives avec Spring Boot, suivant une architecture propre et des tests bout en bout."
+            },
+            "database": {
+                "title": "Conception de Bases de Données",
+                "description": "Structuration de bases de données relationnelles comme PostgreSQL & MySQL et NoSQL comme MongoDB, Neo4j, avec des requêtes optimisées et des stratégies d'indexation."
+            },
+            "fullstack": {
+                "title": "Applications Web Full Stack",
+                "description": "Développement de bout en bout, de l'UI au serveur — livraison d'applications web complètes et prêtes pour la production."
+            },
+            "cleancode": {
+                "title": "Code Propre & Architecture",
+                "description": "Écriture de code maintenable selon les principes SOLID, avec une séparation des préoccupations, un nommage significatif et une documentation complète."
+            }
+        }
+    },
+    "about": {
+        "sectionTitle": "À propos de moi",
+        "subtitle": "Développeur Full Stack — Code propre & Architecture scalable",
+        "downloadCv": "Télécharger CV",
+        "bio": "Développeur Full Stack diplômé en ingénierie de Polytech Lyon, je conçois des applications web modernes, rapides et évolutives, avec une attention particulière portée à l’architecture propre et aux performances en conditions réelles.\n\nJ’interviens sur l’ensemble de la stack Angular, React et Spring Boot, en transformant des idées en systèmes prêts pour la production — des interfaces utilisateurs réactives jusqu’à des APIs backend robustes, sécurisées et bien structurées. Je ne me contente pas de développer des fonctionnalités : je conçois des systèmes maintenables, scalables et pensés pour durer.\n\nMa formation d’ingénieur influence profondément mon approche : structurée, analytique et orientée détail. Chaque projet est un exercice de précision — écrire du code qui n’est pas seulement fonctionnel, mais réfléchi.\n\nActuellement, je renforce mon expertise backend à travers une formation approfondie sur Spring Boot, en explorant davantage le développement orienté entreprise, la conception d’APIs et l’architecture des systèmes backend."
+    },
+    "portfolio": {
+        "title": "Portfolio",
+        "sourceCode": "Code Source",
+        "empty": "Aucun projet trouvé dans cette catégorie.",
+        "categories": {
+            "all": "Tous",
+            "backend": "Backend",
+            "frontend": "Frontend",
+            "fullstack": "Full Stack"
+        },
+        "projects": {
+            "shipmentTracker": {
+                "title": "Système de Suivi de Colis"
+            },
+            "taskManager": {
+                "title": "Gestionnaire de Tâches"
+            },
+            "patientManagement": {
+                "title": "Système de Gestion Patients"
+            },
+            "libraryManagement": {
+                "title": "Système de Gestion Bibliothèque"
+            },
+            "onlineMarketplace": {
+                "title": "Marketplace en Ligne"
+            },
+            "clothingStore": {
+                "title": "Boutique de Vêtements"
+            }
+        }
+    },
+    "contact": {
+        "title": "Me contacter",
+        "subtitle": "Cultivons des connexions : Contactez-moi",
+        "name": "Nom",
+        "email": "Email",
+        "phone": "Numéro de téléphone",
+        "service": "Service souhaité",
+        "timeline": "Délai",
+        "details": "Détails du projet...",
+        "send": "Envoyer",
+        "sending": "Envoi en cours...",
+        "success": "Message envoyé avec succès ! Je vous répondrai bientôt.",
+        "error": "Échec de l'envoi. Veuillez réessayer.",
+        "services": {
+            "fullstack": "Développement Full Stack",
+            "frontend": "Développement Frontend",
+            "backend": "Développement Backend",
+            "api": "Développement API",
+            "database": "Conception de Base de Données",
+            "other": "Autre"
+        },
+        "errors": {
+            "name": "Le nom doit contenir au moins 2 caractères",
+            "email": "Adresse email invalide",
+            "phone": "Le numéro doit contenir au moins 10 chiffres",
+            "service": "Veuillez sélectionner un service",
+            "timeline": "Veuillez entrer un délai",
+            "details": "Les détails doivent contenir au moins 10 caractères"
+        }
+    }
+}

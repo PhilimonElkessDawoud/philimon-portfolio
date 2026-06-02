@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { Service, ServicesService } from '../../services/services';
 
 @Component({
   selector: 'app-services',
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './services.html',
   styleUrl: './services.css',
 })
@@ -16,7 +17,7 @@ export class Services implements OnInit {
     this.services = this.servicesService.getServices();
   }
 
-  getDelayClass(index: number): string {
-    return `delay-${(index + 1) * 100}`;
+  getDelayClass(id: number): string {
+    return `delay-${id * 100}`;
   }
 }

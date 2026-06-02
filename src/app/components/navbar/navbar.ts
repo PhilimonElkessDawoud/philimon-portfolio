@@ -1,24 +1,32 @@
-import { Component } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { LanguageService } from '../../services/language';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, TranslateModule],
   templateUrl: './navbar.html',
 })
 export class Navbar {
   isMenuOpen = false;
+  private languageService = inject(LanguageService);
 
   navLinks = [
-    { id: 1, name: 'Home', path: '/' },
-    { id: 2, name: 'Services', path: '/services' },
-    { id: 3, name: 'About me', path: '/about' },
-    { id: 4, name: 'Portfolio', path: '/portfolio' },
-    // { id: 5, name: 'Feedback', path: '/feedback' },
-    { id: 6, name: 'Contact me', path: '/contact' },
+    { id: 1, key: 'home', path: '/' },
+    { id: 2, key: 'services', path: '/services' },
+    { id: 3, key: 'about', path: '/about' },
+    { id: 4, key: 'portfolio', path: '/portfolio' },
+    { id: 6, key: 'contact', path: '/contact' },
   ];
 
-  constructor(private router: Router) { }
+  get currentLang() {
+    return this.languageService.getCurrent();
+  }
+
+  toggleLanguage() {
+    this.languageService.toggle();
+  }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;

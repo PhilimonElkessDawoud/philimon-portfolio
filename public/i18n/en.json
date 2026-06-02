@@ -1,0 +1,120 @@
+{
+    "nav": {
+        "home": "Home",
+        "services": "Services",
+        "about": "About me",
+        "portfolio": "Portfolio",
+        "feedback": "Feedback",
+        "contact": "Contact me",
+        "hireMe": "Hire Me"
+    },
+    "home": {
+        "greeting": "Hi I am",
+        "title": "Full Stack Developer",
+        "hireMeBtn": "Hire Me",
+        "downloadCv": "Download CV",
+        "cvLink": "cvs/Philimon-Ekladyous-Resume-en.pdf",
+        "stats": {
+            "experience": "Experiences",
+            "projects": "Projects done",
+            "clients": "Happy Clients"
+        }
+    },
+    "footer": {
+        "designedBy": "Designed by",
+        "role": "Full Stack Developer"
+    },
+    "services": {
+        "title": "Services",
+        "subtitle": "I provide comprehensive web development solutions tailored to your needs, from building modern user interfaces to designing robust backend systems.",
+        "items": {
+            "frontend": {
+                "title": "Frontend Development",
+                "description": "Building responsive, pixel-perfect UIs using Angular with smooth animations and full cross-browser compatibility."
+            },
+            "backend": {
+                "title": "Backend Development",
+                "description": "Designing scalable REST APIs using Spring Boot with clean architecture and end-to-end testing."
+            },
+            "database": {
+                "title": "Database Design",
+                "description": "Structuring efficient relational databases like PostgreSQL & MySQL and also NoSQL like MongoDB, Neo4j, with optimized queries and indexing strategies."
+            },
+            "fullstack": {
+                "title": "Full Stack Web Apps",
+                "description": "End-to-end development from UI to server — delivering complete, production-ready web applications built to scale."
+            },
+            "cleancode": {
+                "title": "Clean Code & Architecture",
+                "description": "Writing maintainable, SOLID-principled code with proper separation of concerns, meaningful naming, and thorough documentation."
+            }
+        }
+    },
+    "about": {
+        "sectionTitle": "About Me",
+        "subtitle": "Full Stack Developer — Clean Code & Scalable Architecture",
+        "downloadCv": "Download CV",
+        "bio": "Full Stack Developer & Engineering graduate from Polytech Lyon, building fast, scalable, and modern web applications with a focus on clean architecture and real-world performance.\n\nI work across the stack with Angular, React, and Spring Boot, turning ideas into production-ready systems — from responsive UIs to secure, well-structured backend APIs. I don't just build features; I design systems that are maintainable, scalable, and engineered to last.\n\nMy engineering background shapes how I think: structured, analytical, and detail-driven. Every project is an exercise in precision — writing code that is not only functional, but intentional.\n\nCurrently sharpening my backend expertise through focused Spring Boot training, pushing deeper into enterprise-grade development, API design, and backend architecture."
+    },
+    "portfolio": {
+        "title": "Portfolio",
+        "sourceCode": "Source Code",
+        "empty": "No projects found in this category.",
+        "categories": {
+            "all": "All",
+            "backend": "Backend",
+            "frontend": "Frontend",
+            "fullstack": "Full Stack"
+        },
+        "projects": {
+            "shipmentTracker": {
+                "title": "Shipment Tracker"
+            },
+            "taskManager": {
+                "title": "Task Manager"
+            },
+            "patientManagement": {
+                "title": "Patient Management System"
+            },
+            "libraryManagement": {
+                "title": "Library Management System"
+            },
+            "onlineMarketplace": {
+                "title": "Online Marketplace"
+            },
+            "clothingStore": {
+                "title": "Online Clothing Store"
+            }
+        }
+    },
+    "contact": {
+        "title": "Contact me",
+        "subtitle": "Cultivating Connections: Reach Out And Connect With Me",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone Number",
+        "service": "Service Of Interest",
+        "timeline": "Timeline",
+        "details": "Project Details...",
+        "send": "Send",
+        "sending": "Sending...",
+        "success": "Message sent successfully! I'll get back to you soon.",
+        "error": "Failed to send message. Please try again.",
+        "services": {
+            "fullstack": "Full Stack Web Development",
+            "frontend": "Frontend Development",
+            "backend": "Backend Development",
+            "api": "API Development",
+            "database": "Database Design",
+            "other": "Other"
+        },
+        "errors": {
+            "name": "Name must be at least 2 characters",
+            "email": "Invalid email address",
+            "phone": "Phone number must be at least 10 digits",
+            "service": "Please select a service",
+            "timeline": "Please enter a timeline",
+            "details": "Project details must be at least 10 characters"
+        }
+    }
+}

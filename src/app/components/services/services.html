@@ -1,16 +1,17 @@
-<section class="py-20 bg-[#1a1a1a] sectionFadeIn">
+<section class="py-24 bg-[#1a1a1a] sectionFadeIn">
     <div class="max-w-7xl mx-auto px-5">
 
         <div class="text-center mb-12">
-            <h2 class="text-white text-3xl font-bold mb-4 titleFadeIn">Services</h2>
+            <h2 class="text-white text-3xl font-bold mb-4 titleFadeIn">
+                {{ 'services.title' | translate }}
+            </h2>
             <p class="text-[#888] text-sm max-w-xl mx-auto subtitleFadeIn">
-                I provide comprehensive web development solutions tailored to your needs,
-                from building modern user interfaces to designing robust backend systems.
+                {{ 'services.subtitle' | translate }}
             </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @for(service of services; track service.id) {
+            @for (service of services; track service.id) {
             <div class="bg-[#2a2a2a] rounded-xl p-8 text-center serviceCard slideInUp glowOnHover"
                 [class]="getDelayClass(service.id)">
 
@@ -84,8 +85,12 @@
                     </div>
                 </div>
 
-                <h3 class="text-orange-500 font-semibold mb-3 textReveal">{{ service.title }}</h3>
-                <p class="text-[#888] text-sm leading-relaxed textReveal">{{ service.description }}</p>
+                <h3 class="text-orange-500 font-semibold mb-3 textReveal">
+                    {{ 'services.items.' + service.key + '.title' | translate }}
+                </h3>
+                <p class="text-[#888] text-sm leading-relaxed textReveal">
+                    {{ 'services.items.' + service.key + '.description' | translate }}
+                </p>
 
             </div>
             }

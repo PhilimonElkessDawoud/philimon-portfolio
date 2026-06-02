@@ -5,7 +5,6 @@ import { Footer } from "./components/footer/footer";
 import { Home } from './components/home/home';
 import { Services } from './components/services/services';
 import { About } from './components/about/about';
-import { Icon } from './shared/icon/icon';
 import { Portfolio } from './components/portfolio/portfolio';
 import { Contact } from './components/contact/contact';
 

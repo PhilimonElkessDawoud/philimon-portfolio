@@ -1,28 +1,29 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, signal, inject } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { PortfolioService, Category, Project } from '../../services/portfolio';
 
 @Component({
   selector: 'app-portfolio',
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './portfolio.html',
   styleUrl: './portfolio.css',
 })
 export class Portfolio {
+  private portfolioService = inject(PortfolioService);
+  private translate = inject(TranslateService);
+
   categories: Category[] = [];
   projects: Project[] = [];
-
   activeCategory = signal<string>('all');
 
-  constructor(private portfolioService: PortfolioService) {
+  constructor() {
     this.categories = this.portfolioService.getCategories();
     this.projects = this.portfolioService.getProjects();
   }
 
   filteredProjects = computed(() => {
     const category = this.activeCategory();
-
     if (category === 'all') return this.projects;
-
     return this.projects.filter(p => p.category === category);
   });
 
@@ -40,7 +41,8 @@ export class Portfolio {
   }
 
   getCategoryLabel(id: string): string {
-    return this.categories.find(c => c.id === id)?.label || '';
+    const category = this.categories.find(c => c.id === id);
+    return category ? this.translate.instant(category.labelKey) : '';
   }
 
   getDelayClass(index: number): string {

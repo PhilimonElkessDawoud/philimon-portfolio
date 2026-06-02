@@ -1,131 +1,122 @@
-<section id="contact" class="py-20 bg-[#1a1a1a] sectionFadeIn">
+<section id="contact" class="py-24 bg-[#1a1a1a] sectionFadeIn">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="rounded-lg p-6 sm:p-10 bg-[#1f1f1f] formContainer gradientShift">
 
             <!-- Header -->
             <div class="text-center mb-10">
                 <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4 titleSlideIn">
-                    Contact me
+                    {{ 'contact.title' | translate }}
                 </h2>
                 <p class="text-[#888888] text-base sm:text-lg subtitleFadeIn">
-                    Cultivating Connections: Reach Out And Connect With Me
+                    {{ 'contact.subtitle' | translate }}
                 </p>
             </div>
 
-            <!-- Success message -->
             @if (submitSuccess) {
             <div
                 class="mb-6 p-4 bg-green-500/10 border border-green-500/30 rounded-md text-green-400 text-sm text-center successBounce">
-                Message sent successfully! I'll get back to you soon.
+                {{ 'contact.success' | translate }}
             </div>
             }
 
-            <!-- Error message -->
-            @if(submitError) {
+            @if (submitError) {
             <div class="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-md text-red-400 text-sm text-center">
-                Failed to send message. Please try again.
+                {{ 'contact.error' | translate }}
             </div>
             }
 
-            <!-- Form -->
             <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-6 formSlideIn">
 
-                <!-- Row 1: Name + Email -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                     <div class="delay-100">
-                        <input formControlName="name" type="text" placeholder="Name"
+                        <input formControlName="name" type="text" [placeholder]="'contact.name' | translate"
                             class="w-full bg-[#2a2a2a] border border-[#333] rounded-md px-4 py-3 text-white placeholder-[#888888] focus:outline-none focus:border-[#FF6B35] transition-colors fieldSlideIn inputFocus"
                             [class.errorShake]="isInvalid(name)" />
-                        @if(isInvalid(name)) {
-                        <p class="text-red-500 text-sm mt-1">
-                            Name must be at least 2 characters
-                        </p>
+                        @if (isInvalid(name)) {
+                        <p class="text-red-500 text-sm mt-1">{{ 'contact.errors.name' | translate }}</p>
                         }
                     </div>
 
                     <div class="delay-200">
-                        <input formControlName="email" type="email" placeholder="Email"
+                        <input formControlName="email" type="email" [placeholder]="'contact.email' | translate"
                             class="w-full bg-[#2a2a2a] border border-[#333] rounded-md px-4 py-3 text-white placeholder-[#888888] focus:outline-none focus:border-[#FF6B35] transition-colors fieldSlideIn inputFocus"
                             [class.errorShake]="isInvalid(email)" />
                         @if (isInvalid(email)) {
-                        <p class="text-red-500 text-sm mt-1">
-                            Invalid email address
-                        </p>
+                        <p class="text-red-500 text-sm mt-1">{{ 'contact.errors.email' | translate }}</p>
                         }
                     </div>
 
                 </div>
 
-                <!-- Row 2: Phone + Service -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                     <div class="delay-300">
-                        <input formControlName="phone" type="tel" placeholder="Phone Number"
+                        <input formControlName="phone" type="tel" [placeholder]="'contact.phone' | translate"
                             class="w-full bg-[#2a2a2a] border border-[#333] rounded-md px-4 py-3 text-white placeholder-[#888888] focus:outline-none focus:border-[#FF6B35] transition-colors fieldSlideIn inputFocus"
                             [class.errorShake]="isInvalid(phone)" />
-                        @if(isInvalid(phone)) {
-                        <p class="text-red-500 text-sm mt-1">
-                            Phone number must be at least 10 digits
-                        </p>
+                        @if (isInvalid(phone)) {
+                        <p class="text-red-500 text-sm mt-1">{{ 'contact.errors.phone' | translate }}</p>
                         }
                     </div>
 
                     <div class="delay-400">
-                        <select formControlName="service"
-                            class="w-full bg-[#2a2a2a] border border-[#333] rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#FF6B35] transition-colors appearance-none cursor-pointer fieldSlideIn inputFocus"
-                            [class.errorShake]="isInvalid(service)">
-                            <option value="" disabled class="text-[#888888]">Service Of Interest</option>
-                            <option value="fullstack-web">Full Stack Web Development</option>
-                            <option value="frontend">Frontend Development</option>
-                            <option value="backend">Backend Development</option>
-                            <option value="api-development">API Development</option>
-                            <option value="database">Database Design</option>
-                            <option value="other">Other</option>
-                        </select>
-                        @if(isInvalid(service)) {
-                        <p class="text-red-500 text-sm mt-1">
-                            Please select a service
-                        </p>
+
+                        <div class="relative">
+                            <select formControlName="service"
+                                class="w-full bg-[#2a2a2a] border border-[#333] rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#FF6B35] transition-colors appearance-none cursor-pointer fieldSlideIn inputFocus pr-10"
+                                [class.errorShake]="isInvalid(service)">
+                                <option value="" disabled class="text-[#888888]">{{ 'contact.service' | translate }}
+                                </option>
+                                <option value="fullstack-web">{{ 'contact.services.fullstack' | translate }}</option>
+                                <option value="frontend">{{ 'contact.services.frontend' | translate }}</option>
+                                <option value="backend">{{ 'contact.services.backend' | translate }}</option>
+                                <option value="api-development">{{ 'contact.services.api' | translate }}</option>
+                                <option value="database">{{ 'contact.services.database' | translate }}</option>
+                                <option value="other">{{ 'contact.services.other' | translate }}</option>
+                            </select>
+
+                            <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none">
+                                <i class="fas fa-chevron-down text-[#888888] text-xs"></i>
+                            </div>
+                        </div>
+
+                        @if (isInvalid(service)) {
+                        <p class="text-red-500 text-sm mt-1">{{ 'contact.errors.service' | translate }}</p>
                         }
+
                     </div>
 
                 </div>
 
-                <!-- Row 3: Timeline + Details -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                     <div class="delay-500">
-                        <input formControlName="timeline" type="text" placeholder="Timeline"
+                        <input formControlName="timeline" type="text" [placeholder]="'contact.timeline' | translate"
                             class="w-full bg-[#2a2a2a] border border-[#333] rounded-md px-4 py-3 text-white placeholder-[#888888] focus:outline-none focus:border-[#FF6B35] transition-colors fieldSlideIn inputFocus"
                             [class.errorShake]="isInvalid(timeline)" />
-                        @if(isInvalid(timeline)) {
-                        <p class="text-red-500 text-sm mt-1">
-                            Please enter a timeline
-                        </p>
+                        @if (isInvalid(timeline)) {
+                        <p class="text-red-500 text-sm mt-1">{{ 'contact.errors.timeline' | translate }}</p>
                         }
                     </div>
 
                     <div class="delay-600">
-                        <textarea formControlName="details" placeholder="Project Details..." rows="5"
+                        <textarea formControlName="details" rows="5" [placeholder]="'contact.details' | translate"
                             class="w-full bg-[#2a2a2a] border border-[#333] rounded-md px-4 py-3 text-white placeholder-[#888888] focus:outline-none focus:border-[#FF6B35] transition-colors resize-none fieldSlideIn inputFocus"
                             [class.errorShake]="isInvalid(details)">
             </textarea>
                         @if (isInvalid(details)) {
-                        <p class="text-red-500 text-sm mt-1">
-                            Project details must be at least 10 characters
-                        </p>
+                        <p class="text-red-500 text-sm mt-1">{{ 'contact.errors.details' | translate }}</p>
                         }
                     </div>
 
                 </div>
 
-                <!-- Submit button -->
                 <div class="flex justify-end">
                     <button type="submit" [disabled]="isSubmitting"
                         class="bg-[#2a2a2a] border border-[#666] text-[#888888] px-8 py-2.5 rounded-md font-medium transition-all duration-300 hover:border-[#FF6B35] hover:text-[#FF6B35] disabled:opacity-50 disabled:cursor-not-allowed buttonHover buttonSlideIn buttonPulse"
                         [class.submitButtonLoading]="isSubmitting">
-                        {{ isSubmitting ? 'Sending...' : 'Send' }}
+                        {{ isSubmitting ? ('contact.sending' | translate) : ('contact.send' | translate) }}
                     </button>
                 </div>
 
