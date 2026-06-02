@@ -21,10 +21,14 @@ export class Contact {
   form = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
     email: ['', [Validators.required, Validators.email]],
-    phone: ['', [Validators.required, Validators.minLength(10)]],
-    service: ['', Validators.required],
-    timeline: ['', Validators.required],
-    details: ['', [Validators.required, Validators.minLength(10)]],
+    phone: ['',],
+    // [Validators.required, Validators.minLength(10)]
+    service: ['',],
+    // Validators.required
+    timeline: ['',],
+    // Validators.required
+    details: ['',],
+    // [Validators.required, Validators.minLength(10)]
   });
 
   get name() { return this.form.get('name')!; }
