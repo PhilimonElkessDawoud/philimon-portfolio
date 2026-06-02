@@ -1,7 +1,6 @@
-declare const window: any;
-
 export const environment = {
-    emailjsServiceId: window.__env?.emailjsServiceId || '',
-    emailjsTemplateId: window.__env?.emailjsTemplateId || '',
-    emailjsPublicKey: window.__env?.emailjsPublicKey || '',
+    production: true,
+    emailjsServiceId: 'service_rvc97k8',
+    emailjsTemplateId: 'template_pipkir7',
+    emailjsPublicKey: 'hh0fygjAjuROBVOG7',
 };
