@@ -8,4 +8,4 @@ window.__env = {
 };
 `;
 
-fs.writeFileSync("src/env.js", envFile);
+fs.writeFileSync("src/assets/env.js", envFile);
